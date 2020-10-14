@@ -32,7 +32,8 @@ func main(){
     entropy := passwordvalidator.GetEntropy("a longer password")
     // entropy is a float64, representing the strength in base 2 (bits)
     
-    err := passwordvalidator.Validate("some password", 60)
+    const minEntropyBits = 60
+    err := passwordvalidator.Validate("some password", minEntropyBits)
     // if the password has enough entropy, err is nil
     // otherwise, a formatted error message is provided explaining
     // how to increase the strength of the password
