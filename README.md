@@ -70,6 +70,10 @@ After we have calculated a base, the total number of brute-force-guesses is foun
 
 A password using base 26 with 7 characters would require `26^7`, or `8031810176` guesses.
 
+Once we know the number of guesses it would take, we can calculate the actual entropy in bits using `log2(guesses)`
+
+The culculations are done in log space in practice to avoid numeric overflow.
+
 ### Additional Safety
 
 To add further safety to dumb passwords like aaaaaaaaaaaaa, or 123123123, We modify the length of the password to count any more than two of the same character as 0.
