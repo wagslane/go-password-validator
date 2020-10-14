@@ -1,11 +1,11 @@
 # go-password-validator
-Validate the Strength of a Password in Go
+No-bullshit password validator using raw entropy values
 
 [![](https://godoc.org/github.com/lane-c-wagner/go-password-validator?status.svg)](https://godoc.org/github.com/lane-c-wagner/go-password-validator)
 
 This project can be used to front a password strength meter, or simplay validate password strength on the server. Benefits:
 
-* No stupid rules (use uppercase, use special characters, etc)
+* No stupid rules (doesn't require uppercase, numbers, special characters, etc)
 * Everything is based on entropy (raw cryptographic strength of the password)
 * Inspired by this [XKCD](https://xkcd.com/936/)
 
