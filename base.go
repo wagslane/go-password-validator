@@ -1,5 +1,7 @@
 package passwordvalidator
 
+import "strings"
+
 const (
 	specialChars = ` !"#$%&'()*+,-./:;<=>?@[\]^_{|}~`
 	lowerChars   = `abcdefghijklmnopqrstuvwxyz`
@@ -20,19 +22,19 @@ func getBase(password string) int {
 	base := 0
 
 	for c := range chars {
-		if containsRune(specialChars, c) {
+		if strings.ContainsRune(specialChars, c) {
 			hasSpecial = true
 			continue
 		}
-		if containsRune(lowerChars, c) {
+		if strings.ContainsRune(lowerChars, c) {
 			hasLower = true
 			continue
 		}
-		if containsRune(upperChars, c) {
+		if strings.ContainsRune(upperChars, c) {
 			hasUpper = true
 			continue
 		}
-		if containsRune(digitsChars, c) {
+		if strings.ContainsRune(digitsChars, c) {
 			hasDigits = true
 			continue
 		}
@@ -52,13 +54,4 @@ func getBase(password string) int {
 		base += len(digitsChars)
 	}
 	return base
-}
-
-func containsRune(s string, r rune) bool {
-	for _, c := range s {
-		if c == r {
-			return true
-		}
-	}
-	return false
 }
