@@ -21,19 +21,19 @@ func Validate(password string, minEntropy float64) error {
 	hasUpper := false
 	hasDigits := false
 	for _, c := range password {
-		if containsRune(specialChars, c) {
+		if strings.ContainsRune(specialChars, c) {
 			hasSpecial = true
 			continue
 		}
-		if containsRune(lowerChars, c) {
+		if strings.ContainsRune(lowerChars, c) {
 			hasLower = true
 			continue
 		}
-		if containsRune(upperChars, c) {
+		if strings.ContainsRune(upperChars, c) {
 			hasUpper = true
 			continue
 		}
-		if containsRune(digitsChars, c) {
+		if strings.ContainsRune(digitsChars, c) {
 			hasDigits = true
 			continue
 		}
