@@ -52,7 +52,7 @@ Somewhere in the 50-70 range seems "average"
 
 ## How It Works
 
-First we determines the "base" number. The base is a sum of the different "character sets" found in the password.
+First, we determine the "base" number. The base is a sum of the different "character sets" found in the password.
 
 The current character sets include:
 
@@ -73,7 +73,7 @@ A password using base 26 with 7 characters would require `26^7`, or `8031810176`
 
 Once we know the number of guesses it would take, we can calculate the actual entropy in bits using `log2(guesses)`
 
-The culculations are done in log space in practice to avoid numeric overflow.
+The calculations are done in log space in practice to avoid numeric overflow.
 
 ### Additional Safety
 
