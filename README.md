@@ -1,8 +1,10 @@
 # go-password-validator
 
-No-bullshit password validator using raw entropy values
+No-bullshit password validator using raw entropy values. Hit the project with a star if you find it useful ⭐
 
-[![](https://godoc.org/github.com/lane-c-wagner/go-password-validator?status.svg)](https://godoc.org/github.com/lane-c-wagner/go-password-validator)
+Produced and maintained by [Qvault](https://app.qvault.io)
+
+[![](https://godoc.org/github.com/lane-c-wagner/go-password-validator?status.svg)](https://godoc.org/github.com/lane-c-wagner/go-password-validator) ![Deploy](https://github.com/lane-c-wagner/go-password-validator/workflows/Tests/badge.svg)
 
 This project can be used to front a password strength meter, or simply validate password strength on the server. Benefits:
 
