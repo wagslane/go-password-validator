@@ -43,7 +43,7 @@ func main(){
 
 ## What Entropy Value Should I Use?
 
-It's up to you. That said, here is a pretty good graph that shows some timings for differnt values:
+It's up to you. That said, here is a pretty good graph that shows some timings for different values:
 
 ![entropy](https://external-preview.redd.it/rhdADIZYXJM2FxqNf6UOFqU5ar0VX3fayLFpKspN8uI.png?auto=webp&s=9c142ebb37ed4c39fb6268c1e4f6dc529dcb4282)
 
