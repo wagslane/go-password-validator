@@ -1,4 +1,5 @@
 # go-password-validator
+
 No-bullshit password validator using raw entropy values
 
 [![](https://godoc.org/github.com/lane-c-wagner/go-password-validator?status.svg)](https://godoc.org/github.com/lane-c-wagner/go-password-validator)
@@ -31,7 +32,7 @@ import (
 func main(){
     entropy := passwordvalidator.GetEntropy("a longer password")
     // entropy is a float64, representing the strength in base 2 (bits)
-    
+
     const minEntropyBits = 60
     err := passwordvalidator.Validate("some password", minEntropyBits)
     // if the password has enough entropy, err is nil
@@ -95,7 +96,7 @@ None! And it will stay that way, except of course for the standard library.
 
 I love help! Contribute by forking the repo and opening pull requests. Please ensure that your code passes the existing tests and linting, and write tests to test your changes if applicable.
 
-All pull requests should be submitted to the "master" branch.
+All pull requests should be submitted to the `main` branch.
 
 ```bash
 go test
