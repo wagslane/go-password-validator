@@ -6,7 +6,7 @@ var kgm = &keyGraphMap{
 	KeyNodeMap: nil,
 }
 
-// Gets the length of a password.
+// GetLength gets the length of a password.
 // Substrings that can be connected in non-diagonal straight lines count as zero.
 // Single char repeats (aaaaaaaa) count as zero as well.
 func GetLength(password string) int {
