@@ -1,6 +1,9 @@
 package passwordvalidator
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func getLength(password string) int {
 	const maxNumSameChar = 2
@@ -97,23 +100,26 @@ func NewKeyMap() *keyMap {
 }
 
 // Keys are linked like so: https://i.imgur.com/RjBMAEW.png
-// Rooted at tilde "~"
+// Rows are separated by newlines.
+// Spaces denote a nil neighbor.
 func NewKeyGraphMap(symbols, shiftSymbols string) *keyGraphMap {
 	// spaces used below to align keys and denote nil neighbors
-	numRow       := "`1234567890-= "
-	numRowShift  := `~!@#$%^&*()_+ `
-	topRow       := ` qwertyuiop[]\`
-	topRowShift  := ` QWERTYUIOP{}|`
-	homeRow      := ` asdfghjkl;'  `
-	homeRowShift := ` ASDFGHJKL:"  `
-	botRow       := ` zxcvbnm,./   `
-	botRowShift  := ` ZXCVBNM<>?   `
+	//numRow       := "`1234567890-= "
+	//numRowShift  := `~!@#$%^&*()_+ `
+	//topRow       := ` qwertyuiop[]\`
+	//topRowShift  := ` QWERTYUIOP{}|`
+	//homeRow      := ` asdfghjkl;'  `
+	//homeRowShift := ` ASDFGHJKL:"  `
+	//botRow       := ` zxcvbnm,./   `
+	//botRowShift  := ` ZXCVBNM<>?   `
 
-	mat := [][]*keyNode{}
-	mat = append(mat, genKeyNodeArray(numRow, numRowShift))
-	mat = append(mat, genKeyNodeArray(topRow, topRowShift))
-	mat = append(mat, genKeyNodeArray(homeRow, homeRowShift))
-	mat = append(mat, genKeyNodeArray(botRow, botRowShift))
+	//mat := [][]*keyNode{}
+	//mat = append(mat, genKeyNodeArray(numRow, numRowShift))
+	//mat = append(mat, genKeyNodeArray(topRow, topRowShift))
+	//mat = append(mat, genKeyNodeArray(homeRow, homeRowShift))
+	//mat = append(mat, genKeyNodeArray(botRow, botRowShift))
+
+	mat := genKeyNodeMatrix(symbols, shiftSymbols)
 
 	for _,v := range mat {
 		for _,vv := range v {
@@ -198,6 +204,19 @@ func genKeyNodeArray(symbols, shiftSymbols string) []*keyNode {
 		})
 	}
 	return res
+}
+
+// each row must be separated by newline
+func genKeyNodeMatrix(symbols, shiftSymbols string) [][]*keyNode {
+	symArr := strings.Split(symbols,"\n")
+	shSymArr := strings.Split(shiftSymbols,"\n")
+
+	mat := make([][]*keyNode, 0, len(symArr))
+
+	for i := 0; i < len(symArr)-1; i++ {
+		mat = append(mat, genKeyNodeArray(symArr[i], shSymArr[i]))
+	}
+	return mat
 }
 
 type keyGraphMap struct {

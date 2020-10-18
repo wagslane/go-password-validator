@@ -20,13 +20,13 @@ func TestGetLength(t *testing.T) {
 }
 
 func TestQwertyKeyGraphMap(t *testing.T) {
-	numRow       := "`1234567890-= "
-	numRowShift  := `~!@#$%^&*()_+ `
-	topRow       := ` qwertyuiop[]\`
-	topRowShift  := ` QWERTYUIOP{}|`
-	homeRow      := ` asdfghjkl;'  `
-	homeRowShift := ` ASDFGHJKL:"  `
-	botRow       := ` zxcvbnm,./   `
+	numRow       := "`1234567890-= " + "\n"
+	numRowShift  := `~!@#$%^&*()_+ ` + "\n"
+	topRow       := ` qwertyuiop[]\` + "\n"
+	topRowShift  := ` QWERTYUIOP{}|` + "\n"
+	homeRow      := ` asdfghjkl;'  ` + "\n"
+	homeRowShift := ` ASDFGHJKL:"  ` + "\n"
+	botRow       := ` zxcvbnm,./   ` + "\n"
 	botRowShift  := ` ZXCVBNM<>?   `
 
 	symbols := numRow+topRow+homeRow+botRow
