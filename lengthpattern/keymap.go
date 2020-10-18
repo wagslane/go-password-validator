@@ -6,7 +6,7 @@ type keyMap struct {
 	shiftedKeyMap map[rune]key // shiftedSymbols as index to map
 }
 
-func NewKeyMap(matrix [][]*keyNode) *keyMap {
+func newKeyMap(matrix [][]*keyNode) *keyMap {
 	km := &keyMap{
 		keyMap:        make(map[rune]key),
 		shiftedKeyMap: make(map[rune]key),

@@ -9,7 +9,7 @@ var kgm = &keyGraphMap{
 // Gets the length of a password.
 // Substrings that can be connected in non-diagonal straight lines count as zero.
 // Single char repeats (aaaaaaaa) count as zero as well.
-func getLength(password string) int {
+func GetLength(password string) int {
 	if len(password) == 0  {
 		return 0
 	}
@@ -66,7 +66,7 @@ func genQwertyKGM() *keyGraphMap {
 
 	symbols := numRow+topRow+homeRow+botRow
 	shiftSymbols := numRowShift+topRowShift+homeRowShift+botRowShift
-	return NewKeyGraphMap(symbols, shiftSymbols)
+	return newKeyGraphMap(symbols, shiftSymbols)
 }
 
 

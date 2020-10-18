@@ -7,10 +7,10 @@ type keyNodeMap struct {
 	keyMap             *keyMap
 }
 
-func NewKeyNodeMap(matrix [][]*keyNode) *keyNodeMap{
+func newKeyNodeMap(matrix [][]*keyNode) *keyNodeMap{
 	res := &keyNodeMap{
 		internalKeyNodeMap: map[key]*keyNode{},
-		keyMap:             NewKeyMap(matrix),
+		keyMap:             newKeyMap(matrix),
 	}
 
 	for rowNum, row := range matrix {

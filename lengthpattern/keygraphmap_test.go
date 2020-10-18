@@ -17,7 +17,7 @@ func TestQwertyKeyGraphMap(t *testing.T) {
 
 	symbols := numRow+topRow+homeRow+botRow
 	shiftSymbols := numRowShift+topRowShift+homeRowShift+botRowShift
-	kgm := NewKeyGraphMap(symbols, shiftSymbols)
+	kgm := newKeyGraphMap(symbols, shiftSymbols)
 
 	actual := recordGraphTraversal(kgm.Head.neighborRight.neighborBottom,"rrrrrrrrrrdlllllllllldrrruuu")
 	expected := `qwertyuiop[';lkjhgfdsazxcvfr4`

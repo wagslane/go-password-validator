@@ -7,7 +7,7 @@ type keyGraphMap struct {
 
 // Keyboard rows are separated by newlines.
 // Spaces denote a nil neighbor and are used to align keys.
-func NewKeyGraphMap(symbols, shiftSymbols string) *keyGraphMap {
+func newKeyGraphMap(symbols, shiftSymbols string) *keyGraphMap {
 	mat := genKeyNodeMatrix(symbols, shiftSymbols)
 	return genKeyGraphMap(mat)
 }
@@ -19,7 +19,7 @@ func (kgm keyGraphMap) Get(r rune) *keyNode{
 func genKeyGraphMap(matrix [][]*keyNode) *keyGraphMap {
 	return &keyGraphMap{
 		Head:       matrix[0][0], // Head.Key.Symbol should equal ~ for qwerty
-		KeyNodeMap: NewKeyNodeMap(matrix),
+		KeyNodeMap: newKeyNodeMap(matrix),
 	}
 }
 
