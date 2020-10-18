@@ -2,7 +2,7 @@ package passwordvalidator
 
 import "github.com/lane-c-wagner/go-password-validator/lengthpattern"
 
-// UsePatternPenalty, when true, counts substrings that can be connected in non-diagonal straight lines count as zero.
+// UsePatternPenalty, when true, counts substrings that can be connected in a continuous (non-diagonal) line count as zero.
 var UsePatternPenalty = false
 
 func getLength(password string) int {

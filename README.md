@@ -84,6 +84,18 @@ To add further safety to dumb passwords like aaaaaaaaaaaaa, or 123123123, We mod
 * `aaaa` has length 2
 * `12121234` has length 6
 
+`passwordvalidator.UsePatternPenalty = true` counts the parts of passwords that can be drawn in a continuous line on a QWERTY keyboard as 0 length, based on neighboring key location.
+
+* `aaaa` has length 0
+* `aaaaAAAA` has length 0
+* `12121234` has length 0
+* `1!1!1!1!!!!111122222@@@` has length 0
+* `qwertyuiop` has length 0
+* `qazxcvbn` has length 0
+* `qweasd` has length 1
+* `qti` has length 3
+* `19dl` has length 4
+
 ## 💬 Contact
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/wagslane.svg?label=Follow%20Wagslane&style=social)](https://twitter.com/intent/follow?screen_name=wagslane)
