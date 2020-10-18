@@ -19,19 +19,20 @@ func TestQwertyKeyGraphMap(t *testing.T) {
 	shiftSymbols := numRowShift+topRowShift+homeRowShift+botRowShift
 	kgm := NewKeyGraphMap(symbols, shiftSymbols)
 
-	// Tests that neighbors are aligned correctly
-	// starts at q
-	actual := recordGraphTraversal(kgm.Head.NeighborRight.NeighborBottom,"rrrrrrrrrrdlllllllllldrrruuu")
+	actual := recordGraphTraversal(kgm.Head.neighborRight.neighborBottom,"rrrrrrrrrrdlllllllllldrrruuu")
 	expected := `qwertyuiop[';lkjhgfdsazxcvfr4`
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actualNode := kgm.KeyNodeMap[key{
-		Symbol:      'q',
-		ShiftSymbol: 'Q',
-	}]
-	expectedNode := kgm.Head.NeighborRight.NeighborBottom
+	actualNode := kgm.Get('q')
+	expectedNode := kgm.Head.neighborRight.neighborBottom
+	if actualNode != expectedNode {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actualNode = kgm.Get('Q')
+	expectedNode = kgm.Head.neighborRight.neighborBottom
 	if actualNode != expectedNode {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
@@ -45,16 +46,16 @@ func recordGraphTraversal(start *keyNode, directions string)  string {
 	currNode := start
 	for _, dir := range directions {
 		if dir == 'r' {
-			currNode = currNode.NeighborRight
+			currNode = currNode.neighborRight
 		}
 		if dir == 'u' {
-			currNode = currNode.NeighborTop
+			currNode = currNode.neighborTop
 		}
 		if dir == 'd' {
-			currNode = currNode.NeighborBottom
+			currNode = currNode.neighborBottom
 		}
 		if dir == 'l' {
-			currNode = currNode.NeighborLeft
+			currNode = currNode.neighborLeft
 		}
 		res.WriteRune(currNode.Key.Symbol)
 	}

@@ -1,29 +1,21 @@
 package lengthpattern
 
-// Used to make KeyGraphMap.Get(r rune) use either normal symbol or shift symbol for arg r.
+// Used to make keyNodeMap.Node(r rune) use either normal symbol or shift symbol for arg r.
 type keyMap struct {
 	keyMap map[rune]key // normalSymbols index to map
 	shiftedKeyMap map[rune]key // shiftedSymbols as index to map
 }
 
 func NewKeyMap(matrix [][]*keyNode) *keyMap {
-	numRow       := "`1234567890-= "
-	numRowShift  := `~!@#$%^&*()_+ `
-	topRow       := ` qwertyuiop[]\`
-	topRowShift  := ` QWERTYUIOP{}|`
-	homeRow      := ` asdfghjkl;'  `
-	homeRowShift := ` ASDFGHJKL:"  `
-	botRow       := ` zxcvbnm,./   `
-	botRowShift  := ` ZXCVBNM<>?   `
-
 	km := &keyMap{
-		keyMap:        make(map[rune]key, len(numRow) + len(topRow) + len(homeRow) + len(botRow)),
-		shiftedKeyMap: make(map[rune]key, len(numRow) + len(topRow) + len(homeRow) + len(botRow)),
+		keyMap:        make(map[rune]key),
+		shiftedKeyMap: make(map[rune]key),
 	}
-	km.PushString(numRow, numRowShift)
-	km.PushString(topRow, topRowShift)
-	km.PushString(homeRow, homeRowShift)
-	km.PushString(botRow, botRowShift)
+	for _, row := range matrix {
+		for _, col := range row {
+			km.Push(col.Key)
+		}
+	}
 	return km
 }
 

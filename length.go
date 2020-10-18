@@ -18,5 +18,3 @@ func getLength(password string) int {
 	}
 	return length
 }
-
-
