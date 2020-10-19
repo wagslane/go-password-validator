@@ -79,11 +79,14 @@ The calculations are done in log space in practice to avoid numeric overflow.
 
 ### Additional Safety
 
-To add further safety to dumb passwords like aaaaaaaaaaaaa, or 123123123, We modify the length of the password to count any more than two of the same character as 0.
+#### More than Two of the Same Character
+To add further safety to dumb passwords like aaaaaaaaaaaaa, or 123123123, we modify the length of the password to count any more than two of the same character as 0.
 
 * `aaaa` has length 2
 * `12121234` has length 6
 
+#### Common Passwords
+The `Validate` function provides an error (safe to view by the user) if the password exists in [this 10,000 most common passwords list](https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-10000.txt).
 ## 💬 Contact
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/wagslane.svg?label=Follow%20Wagslane&style=social)](https://twitter.com/intent/follow?screen_name=wagslane)
