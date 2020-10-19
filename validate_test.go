@@ -28,7 +28,7 @@ func TestValidate(t *testing.T) {
 		t.Errorf("Err should be nil")
 	}
 
-	for password, _ := range passwordsMap {
+	for password := range passwordsMap {
 		err = Validate(password, 900)
 		if !strings.Contains(err.Error(), "uncommon password") {
 			t.Error("Err shouldn't be nil and should contain 'uncommon password' ", err, password)
