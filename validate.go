@@ -3,6 +3,9 @@ package passwordvalidator
 import (
 	"errors"
 	"fmt"
+	"io/ioutil"
+	"log"
+	"sort"
 	"strings"
 )
 
@@ -53,6 +56,9 @@ func Validate(password string, minEntropy float64) error {
 	if !hasDigits {
 		allMessages = append(allMessages, "using numbers")
 	}
+	if _, exists := passwordsMap[password]; exists {
+		allMessages = append(allMessages, "using an uncommon password")
+	}
 
 	if len(allMessages) > 0 {
 		return fmt.Errorf(
@@ -62,4 +68,35 @@ func Validate(password string, minEntropy float64) error {
 	}
 
 	return errors.New("Insecure password. Try using a longer password")
+}
+
+var passwordsMap = genPasswordsMap()
+
+func genPasswordsMap() map[string]struct{} {
+	b, err := ioutil.ReadFile("most-common-passwords.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	passwords := strings.Split(string(b),"\n")
+	sort.Sort(byLength(passwords))
+
+	passwordsMap := make(map[string]struct{}, 10000)
+	for _, password := range passwords {
+		passwordsMap[password] = struct{}{}
+	}
+
+	return passwordsMap
+}
+
+type byLength []string
+
+func (s byLength) Len() int {
+	return len(s)
+}
+func (s byLength) Swap(i, j int) {
+	s[i], s[j] = s[j], s[i]
+}
+func (s byLength) Less(i, j int) bool {
+	return len(s[i]) < len(s[j])
 }
