@@ -26,14 +26,6 @@ func logX(base, n float64) float64 {
 	return math.Log2(n) / math.Log2(base)
 }
 
-func logBaseTo2(base, n float64) float64 {
-	if base == 0 {
-		return 0
-	}
-	// change of base formulae
-	return math.Log2(n) / math.Log2(base)
-}
-
 // logPow calculates log_base(x^y)
 // without leaving logspace for each multiplication step
 // this makes it take less space in memory

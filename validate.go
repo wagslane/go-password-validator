@@ -56,10 +56,10 @@ func Validate(password string, minEntropy float64) error {
 
 	if len(allMessages) > 0 {
 		return fmt.Errorf(
-			"Insecure password. Try %v or using a longer password",
+			"insecure password. Try %v or using a longer password",
 			strings.Join(allMessages, ", "),
 		)
 	}
 
-	return errors.New("Insecure password. Try using a longer password")
+	return errors.New("insecure password. Try using a longer password")
 }
