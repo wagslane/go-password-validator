@@ -40,5 +40,10 @@ jobs:
         make install-staticcheck
         make staticcheck
 
+    - name: Gosec
+      uses: securego/gosec@master
+      with:
+        args: ./...
+
     - name: Test
       run: make test
