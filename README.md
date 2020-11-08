@@ -101,9 +101,8 @@ I love help! Contribute by forking the repo and opening pull requests. Please en
 All pull requests should be submitted to the `main` branch.
 
 ```bash
-go test
-```
-
-```bash
-go fmt
+make test
+make fmt
+make vet
+make lint
 ```
