@@ -5,6 +5,7 @@ No-bullshit password validator using raw entropy values. Hit the project with a 
 Supported by [Qvault](https://app.qvault.io)
 
 [![](https://godoc.org/github.com/lane-c-wagner/go-password-validator?status.svg)](https://godoc.org/github.com/lane-c-wagner/go-password-validator) ![Deploy](https://github.com/lane-c-wagner/go-password-validator/workflows/Tests/badge.svg)
+[![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go)
 
 This project can be used to front a password strength meter, or simply validate password strength on the server. Benefits:
 
