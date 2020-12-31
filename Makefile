@@ -13,3 +13,9 @@ install-lint:
 
 lint:
 	go list ./... | grep -v /vendor/ | xargs -L1 golint -set_exit_status
+
+install-staticcheck:
+	GO111MODULE=off go get honnef.co/go/tools/cmd/staticcheck
+
+staticcheck:
+	staticcheck -f stylish ./...

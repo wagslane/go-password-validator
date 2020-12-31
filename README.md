@@ -1,8 +1,15 @@
 # go-password-validator
 
+<<<<<<< HEAD
 Simple password validator using raw entropy values
+=======
+No-bullshit password validator using raw entropy values. Hit the project with a star if you find it useful ⭐
+>>>>>>> 6f5036d30f8c3c4196b7697389561b1df38ce96c
 
-[![](https://godoc.org/github.com/lane-c-wagner/go-password-validator?status.svg)](https://godoc.org/github.com/lane-c-wagner/go-password-validator)
+Supported by [Qvault](https://qvault.io)
+
+[![](https://godoc.org/github.com/lane-c-wagner/go-password-validator?status.svg)](https://godoc.org/github.com/lane-c-wagner/go-password-validator) ![Deploy](https://github.com/lane-c-wagner/go-password-validator/workflows/Tests/badge.svg)
+[![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go)
 
 This project can be used to front a password strength meter, or simply validate password strength on the server. Benefits:
 
@@ -54,7 +61,7 @@ Somewhere in the 50-70 range seems "average"
 
 ## How It Works
 
-First we determines the "base" number. The base is a sum of the different "character sets" found in the password.
+First, we determine the "base" number. The base is a sum of the different "character sets" found in the password.
 
 The current character sets include:
 
@@ -129,9 +136,8 @@ I love help! Contribute by forking the repo and opening pull requests. Please en
 All pull requests should be submitted to the `main` branch.
 
 ```bash
-go test
-```
-
-```bash
-go fmt
+make test
+make fmt
+make vet
+make lint
 ```
