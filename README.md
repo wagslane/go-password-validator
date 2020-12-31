@@ -1,10 +1,6 @@
 # go-password-validator
 
-<<<<<<< HEAD
-Simple password validator using raw entropy values
-=======
-No-bullshit password validator using raw entropy values. Hit the project with a star if you find it useful ⭐
->>>>>>> 6f5036d30f8c3c4196b7697389561b1df38ce96c
+Simple password validator using raw entropy values. Hit the project with a star if you find it useful ⭐
 
 Supported by [Qvault](https://qvault.io)
 
