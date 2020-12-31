@@ -3,10 +3,12 @@ package passwordvalidator
 import "strings"
 
 const (
-	specialChars = ` !"#$%&'()*+,-./:;<=>?@[\]^_{|}~`
-	lowerChars   = `abcdefghijklmnopqrstuvwxyz`
-	upperChars   = `ABCDEFGHIJKLMNOPQRSTUVWXYZ`
-	digitsChars  = `0123456789`
+	replaceChars      = `!@$&*`
+	sepChars          = `_-., `
+	otherSpecialChars = `"#%'()+/:;<=>?[\]^{|}~`
+	lowerChars        = `abcdefghijklmnopqrstuvwxyz`
+	upperChars        = `ABCDEFGHIJKLMNOPQRSTUVWXYZ`
+	digitsChars       = `0123456789`
 )
 
 func getBase(password string) int {
@@ -15,15 +17,25 @@ func getBase(password string) int {
 		chars[c] = struct{}{}
 	}
 
-	hasSpecial := false
+	hasReplace := false
+	hasSep := false
+	hasOtherSpecial := false
 	hasLower := false
 	hasUpper := false
 	hasDigits := false
 	base := 0
 
 	for c := range chars {
-		if strings.ContainsRune(specialChars, c) {
-			hasSpecial = true
+		if strings.ContainsRune(replaceChars, c) {
+			hasReplace = true
+			continue
+		}
+		if strings.ContainsRune(sepChars, c) {
+			hasSep = true
+			continue
+		}
+		if strings.ContainsRune(otherSpecialChars, c) {
+			hasOtherSpecial = true
 			continue
 		}
 		if strings.ContainsRune(lowerChars, c) {
@@ -41,8 +53,14 @@ func getBase(password string) int {
 		base++
 	}
 
-	if hasSpecial {
-		base += len(specialChars)
+	if hasReplace {
+		base += len(replaceChars)
+	}
+	if hasSep {
+		base += len(sepChars)
+	}
+	if hasOtherSpecial {
+		base += len(otherSpecialChars)
 	}
 	if hasLower {
 		base += len(lowerChars)

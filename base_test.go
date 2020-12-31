@@ -23,8 +23,20 @@ func TestGetBase(t *testing.T) {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
+	actual = getBase("^_")
+	expected = len(otherSpecialChars) + len(sepChars)
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = getBase("^")
+	expected = len(otherSpecialChars)
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
 	actual = getBase("!")
-	expected = len(specialChars)
+	expected = len(replaceChars)
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
