@@ -16,13 +16,23 @@ func Validate(password string, minEntropy float64) error {
 		return nil
 	}
 
-	hasSpecial := false
+	hasReplace := false
+	hasSep := false
+	hasOtherSpecial := false
 	hasLower := false
 	hasUpper := false
 	hasDigits := false
 	for _, c := range password {
-		if strings.ContainsRune(specialChars, c) {
-			hasSpecial = true
+		if strings.ContainsRune(replaceChars, c) {
+			hasReplace = true
+			continue
+		}
+		if strings.ContainsRune(sepChars, c) {
+			hasSep = true
+			continue
+		}
+		if strings.ContainsRune(otherSpecialChars, c) {
+			hasOtherSpecial = true
 			continue
 		}
 		if strings.ContainsRune(lowerChars, c) {
@@ -41,8 +51,8 @@ func Validate(password string, minEntropy float64) error {
 
 	allMessages := []string{}
 
-	if !hasSpecial {
-		allMessages = append(allMessages, "including special characters")
+	if !hasOtherSpecial || !hasSep || !hasReplace {
+		allMessages = append(allMessages, "including more special characters")
 	}
 	if !hasLower {
 		allMessages = append(allMessages, "using lowercase letters")
@@ -56,10 +66,10 @@ func Validate(password string, minEntropy float64) error {
 
 	if len(allMessages) > 0 {
 		return fmt.Errorf(
-			"Insecure password. Try %v or using a longer password",
+			"insecure password, try %v or using a longer password",
 			strings.Join(allMessages, ", "),
 		)
 	}
 
-	return errors.New("Insecure password. Try using a longer password")
+	return errors.New("insecure password, try using a longer password")
 }
