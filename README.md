@@ -53,20 +53,20 @@ func main(){
 
 ## What Entropy Value Should I Use?
 
-It's up to you. That said, here is a pretty good graph that shows some timings for different values:
+It's up to you. That said, here is a graph that shows some common timings for different values, somewhere in the 50-70 range seems "reasonable".
+
+Keep in mind that attackers likely aren't just brute-forcing passwords, if you want protection against common passwords or [PWNed passwords](https://haveibeenpwned.com/) you'll need to do additional work. This library is lightweight, dones't load large datasets, and doesn't contact external services.
 
 ![entropy](https://external-preview.redd.it/rhdADIZYXJM2FxqNf6UOFqU5ar0VX3fayLFpKspN8uI.png?auto=webp&s=9c142ebb37ed4c39fb6268c1e4f6dc529dcb4282)
-
-Somewhere in the 50-70 range seems "average"
 
 ## How It Works
 
 First, we determine the "base" number. The base is a sum of the different "character sets" found in the password.
 
-The current character sets include:
+We've *arbitrarily* chosen the following character sets:
 
 * 26 lowercase letters
-* 26 uppercase
+* 26 uppercase letters
 * 10 digits
 * 5 replacement characters - `!@$&*`
 * 5 seperator characters - `_-., `
@@ -83,13 +83,11 @@ After we have calculated a base, the total number of brute-force-guesses is foun
 
 A password using base 26 with 7 characters would require `26^7`, or `8031810176` guesses.
 
-Once we know the number of guesses it would take, we can calculate the actual entropy in bits using `log2(guesses)`
-
-The calculations are done in log space in practice to avoid numeric overflow.
+Once we know the number of guesses it would take, we can calculate the actual entropy in bits using `log2(guesses)`. That calculation is done in log space in practice to avoid numeric overflow.
 
 ### Additional Safety
 
-We err on the side of reporting *less* entropy rather than *more*
+We try to err on the side of reporting *less* entropy rather than *more*.
 
 #### Same Character
 
