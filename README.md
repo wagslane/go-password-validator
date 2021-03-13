@@ -4,7 +4,7 @@ Simple password validator using raw entropy values. Hit the project with a star 
 
 Supported by [Qvault](https://qvault.io)
 
-[![](https://godoc.org/github.com/lane-c-wagner/go-password-validator?status.svg)](https://godoc.org/github.com/lane-c-wagner/go-password-validator) ![Deploy](https://github.com/lane-c-wagner/go-password-validator/workflows/Tests/badge.svg)
+[![](https://godoc.org/github.com/wagslane/go-password-validator?status.svg)](https://godoc.org/github.com/wagslane/go-password-validator) ![Deploy](https://github.com/wagslane/go-password-validator/workflows/Tests/badge.svg)
 [![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go)
 
 This project can be used to front a password strength meter, or simply validate password strength on the server. Benefits:
@@ -22,7 +22,7 @@ This project can be used to front a password strength meter, or simply validate 
 Outside of a Go module:
 
 ```bash
-go get github.com/lane-c-wagner/go-password-validator
+go get github.com/wagslane/go-password-validator
 ```
 
 ## 🚀 Quick Start
@@ -31,7 +31,7 @@ go get github.com/lane-c-wagner/go-password-validator
 package main
 
 import (
-    passwordvalidator "github.com/lane-c-wagner/go-password-validator"
+    passwordvalidator "github.com/wagslane/go-password-validator"
 )
 
 func main(){

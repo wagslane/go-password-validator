@@ -1,3 +1,3 @@
-module github.com/lane-c-wagner/go-password-validator
+module github.com/wagslane/go-password-validator
 
-go 1.15
+go 1.16
