@@ -26,4 +26,10 @@ func TestValidate(t *testing.T) {
 	if err != nil {
 		t.Errorf("Err should be nil")
 	}
+
+	expectedError = "insecure password, try including more special characters, using lowercase letters, using uppercase letters or using a longer password"
+	err = Validate("123", 60)
+	if err.Error() != expectedError {
+		t.Errorf("Wanted %v, got %v", expectedError, err)
+	}
 }
