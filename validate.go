@@ -22,30 +22,21 @@ func Validate(password string, minEntropy float64) error {
 	hasLower := false
 	hasUpper := false
 	hasDigits := false
+
 	for _, c := range password {
-		if strings.ContainsRune(replaceChars, c) {
+		switch {
+		case strings.ContainsRune(replaceChars, c):
 			hasReplace = true
-			continue
-		}
-		if strings.ContainsRune(sepChars, c) {
+		case strings.ContainsRune(sepChars, c):
 			hasSep = true
-			continue
-		}
-		if strings.ContainsRune(otherSpecialChars, c) {
+		case strings.ContainsRune(otherSpecialChars, c):
 			hasOtherSpecial = true
-			continue
-		}
-		if strings.ContainsRune(lowerChars, c) {
+		case strings.ContainsRune(lowerChars, c):
 			hasLower = true
-			continue
-		}
-		if strings.ContainsRune(upperChars, c) {
+		case strings.ContainsRune(upperChars, c):
 			hasUpper = true
-			continue
-		}
-		if strings.ContainsRune(digitsChars, c) {
+		case strings.ContainsRune(digitsChars, c):
 			hasDigits = true
-			continue
 		}
 	}
 
