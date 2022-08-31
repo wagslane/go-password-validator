@@ -2,7 +2,7 @@
 
 Simple password validator using raw entropy values. Hit the project with a star if you find it useful ⭐
 
-Supported by [Qvault](https://qvault.io)
+Supported by [Boot.dev](https://boot.dev)
 
 [![](https://godoc.org/github.com/wagslane/go-password-validator?status.svg)](https://godoc.org/github.com/wagslane/go-password-validator) ![Deploy](https://github.com/wagslane/go-password-validator/workflows/Tests/badge.svg)
 [![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go)
