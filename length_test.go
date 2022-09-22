@@ -100,4 +100,16 @@ func TestGetLength(t *testing.T) {
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
+
+	actual = getLength("abcdefghijkl123456")
+	expected = 4
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = getLength("asdfghjkl123456")
+	expected = 4
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
 }

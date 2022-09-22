@@ -82,12 +82,24 @@ func getLength(password string) int {
 	password = removeMoreThanTwoRepeatingChars(password)
 	password = removeMoreThanTwoFromSequence(password, seqNums)
 	password = removeMoreThanTwoFromSequence(password, seqKeyboard0)
-	password = removeMoreThanTwoFromSequence(password, seqKeyboard1)
+	passwordSeq1First := removeMoreThanTwoFromSequence(password, seqKeyboard1)
+	passwordSeqAlphabetFirst := removeMoreThanTwoFromSequence(password, seqAlphabet)
+	// Depending on which order you run these in, you can get different length.
+	if len(passwordSeq1First) < len(passwordSeqAlphabetFirst) {
+		password = removeMoreThanTwoFromSequence(passwordSeq1First, seqAlphabet)
+	} else {
+		password = removeMoreThanTwoFromSequence(passwordSeqAlphabetFirst, seqKeyboard1)
+	}
 	password = removeMoreThanTwoFromSequence(password, seqKeyboard2)
-	password = removeMoreThanTwoFromSequence(password, seqAlphabet)
 	password = removeMoreThanTwoFromSequence(password, getReversedString(seqNums))
 	password = removeMoreThanTwoFromSequence(password, getReversedString(seqKeyboard0))
-	password = removeMoreThanTwoFromSequence(password, getReversedString(seqKeyboard1))
+	passwordSeq1First = removeMoreThanTwoFromSequence(password, getReversedString(seqKeyboard1))
+	passwordSeqAlphabetFirst = removeMoreThanTwoFromSequence(password, getReversedString(seqAlphabet))
+	if len(passwordSeq1First) < len(passwordSeqAlphabetFirst) {
+		password = removeMoreThanTwoFromSequence(passwordSeq1First, getReversedString(seqAlphabet))
+	} else {
+		password = removeMoreThanTwoFromSequence(passwordSeqAlphabetFirst, getReversedString(seqKeyboard1))
+	}
 	password = removeMoreThanTwoFromSequence(password, getReversedString(seqKeyboard2))
 	password = removeMoreThanTwoFromSequence(password, getReversedString(seqAlphabet))
 	return len(password)
